@@ -1,0 +1,14 @@
+﻿<table class='table table-hover' *ngIf="documents">
+    <thead>
+        <tr>
+            <th>Джерело</th>
+            <th>Назва документу</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let document of documents">
+            <td><a href="http://brovary-rada.gov.ua/documents/{{ document.sourceId }}.html">{{ document.sourceId }}</a></td>
+            <td [routerLink]="['/document', document.sourceId]">{{ document.name }}</td>
+        </tr>
+    </tbody>
+</table>

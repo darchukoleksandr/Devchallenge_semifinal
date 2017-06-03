@@ -1,0 +1,39 @@
+﻿<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" [routerLink]="['']">Brand</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+      </ul>
+      <form class="navbar-form navbar-left">
+
+        <div class="input-group">
+          <span class="input-group-addon">Кільксть</span>
+          <select class="form-control" (change)="amountChanged()" [(ngModel)]="amount" [ngModelOptions]="{standalone: true}">
+            <option>5</option>
+            <option>10</option>
+            <option>20</option>
+            <option>50</option>
+          </select>
+            <span class="input-group-addon">Сторінка</span>
+            <input class="form-control" type="number" min="1" value="1" (change)="pageChanged()" [(ngModel)]="page" [ngModelOptions]="{standalone: true}">
+            <span class="input-group-addon">
+                <input type="checkbox" [(ngModel)]="deleted" [ngModelOptions]="{standalone: true}" (change)="getDeletedDocuments()"> Видалені документи
+            </span>
+            <span class="input-group-addon" (click)="updateDocuments()">Запустити парсер</span>
+        </div>
+      </form>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<div class="container">
+<router-outlet></router-outlet>
+</div>

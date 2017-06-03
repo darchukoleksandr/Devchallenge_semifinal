@@ -1,0 +1,36 @@
+﻿
+<div *ngIf="document">
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<h4>{{document.name}}</h4>
+		</div>
+		<div class="panel-footer" *ngIf="document.deleted">Документ був видалений {{document.deleted}}</div>
+	</div>
+	
+	<div class="row">
+	    <div class="col-xs-12">
+	        <div class="well" [innerHTML]="textRightHtml"></div>
+        </div>
+
+		<div class="col-xs-6">
+			<select class="form-control" [(ngModel)]="textLeft" (change)="updateDifference()">
+				<option *ngFor="let version of document.versions" [value]="version.text">
+					{{version.updated}}
+				</option>
+			</select>
+			<br />
+			<pre>{{textLeft}}</pre>
+			
+		</div>
+	
+		<div class="col-xs-6">
+			<select class="form-control" [(ngModel)]="textRight" (change)="updateDifference()">
+				<option *ngFor="let version of document.versions" [value]="version.text">
+					{{version.updated}}
+				</option>
+			</select>
+			<br />
+		    <pre>{{textRight}}</pre>
+		</div>
+	</div>
+</div>
